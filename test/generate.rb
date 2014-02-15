@@ -5,4 +5,4 @@ if ARGV.size == 0
   exit(1)
 end
 
-RubyDanfe.generate("#{ARGV[0]}.pdf", ARGV[0])
+RubyDanfe.generate("#{File.basename(ARGV[0], '.xml')}.pdf", ARGV[0], :danfe, logo: '/Users/HMz/Development/3rd/taxweb/ruby_danfe/test/logo.png')

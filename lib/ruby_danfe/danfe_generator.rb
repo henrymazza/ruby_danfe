@@ -44,8 +44,8 @@ module RubyDanfe
     end
 
     def render_emitente
-      @pdf.ibox 3.92, 7.46, 0.25, 2.54, '',
-        @xml['emit/xNome'] + "\n" +
+      @pdf.ilogo_box 3.92, 7.46, 0.25, 2.54,
+        @xml['emit/xNome'],
         @xml['enderEmit/xLgr'] + ", " + @xml['enderEmit/nro'] + "\n" +
         @xml['enderEmit/xBairro'] + " - " + @xml['enderEmit/CEP'] + "\n" +
         @xml['enderEmit/xMun'] + "/" + @xml['enderEmit/UF'] + "\n" +
