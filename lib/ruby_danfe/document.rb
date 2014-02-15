@@ -70,14 +70,14 @@ module RubyDanfe
         :style => nil,
         :border => 1
       }.merge(options)
-      bounding_box([at[0], at[1]], :width => w, :height => h, :padding => 1.cm) do
+      bounding_box([at[0], at[1]], :width => w, :height => h) do
         move_down 3
         if RubyDanfe.options[:logo]
           image RubyDanfe.options[:logo], :height => 1.8.cm, :position => :center
         end
         stroke_bounds
         move_down 3
-        text title, options.merge({style: :bold})
+        text title, options.merge({style: :bold, size: 10})
         text info, options.merge({size: 8})
       end
     end
