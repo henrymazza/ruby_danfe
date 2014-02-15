@@ -49,7 +49,7 @@ module RubyDanfe
         @xml['enderEmit/xLgr'] + ", " + @xml['enderEmit/nro'] + "\n" +
         @xml['enderEmit/xBairro'] + " - " + @xml['enderEmit/CEP'] + "\n" +
         @xml['enderEmit/xMun'] + "/" + @xml['enderEmit/UF'] + "\n" +
-        @xml['enderEmit/fone'] + " " + @xml['enderEmit/email'], {:align => :center, :valign => :center}
+        @xml['enderEmit/fone'] + " " + @xml['enderEmit/email'], {:align => :center}
 
       @pdf.ibox 3.92, 3.08, 7.71, 2.54
 
