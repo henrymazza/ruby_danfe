@@ -41,6 +41,10 @@ module RubyDanfe
       box [x.cm, Helper.invert(y.cm)], w.cm, h.cm, title, info, options
     end
 
+    def ilogo_box(h, w, x, y, title = '', info = '', options = {})
+      logo_box [x.cm, Helper.invert(y.cm)], w.cm, h.cm, title, info, options
+    end
+
     def idate(h, w, x, y, title = '', info = '', options = {})
       tt = info.split('-')
       ibox h, w, x, y, title, "#{tt[2]}/#{tt[1]}/#{tt[0]}", options
@@ -57,6 +61,25 @@ module RubyDanfe
       self.stroke_rectangle at, w, h if options[:border] == 1
       self.text_box title, :size => 6, :style => :italic, :at => [at[0] + 2, at[1] - 2], :width => w - 4, :height => 8 if title != ''
       self.text_box info, :size => options[:size], :at => [at[0] + 2, at[1] - (title != '' ? 14 : 4) ], :width => w - 4, :height => h - (title != '' ? 14 : 4), :align => options[:align], :style => options[:style], :valign => options[:valign]
+    end
+
+    def logo_box(at, w, h, title = '', info = '', options = {})
+      options = {
+        :align => :left,
+        :size => 10,
+        :style => nil,
+        :border => 1
+      }.merge(options)
+      bounding_box([at[0], at[1]], :width => w, :height => h, :padding => 1.cm) do
+        move_down 3
+        if RubyDanfe.options[:logo]
+          image RubyDanfe.options[:logo], :height => 1.8.cm, :position => :center
+        end
+        stroke_bounds
+        move_down 3
+        text title, options.merge({style: :bold})
+        text info, options.merge({size: 8})
+      end
     end
 
     def inumeric(h, w, x, y, title = '', info = '', options = {})
